@@ -12,8 +12,7 @@ Plugins
 
 Requirements
 -----------
-* simplejson or python >= 2.6
 * MongoDB 1.4+ 
-
+* pymongo
 
 
