@@ -7,21 +7,14 @@ import sys
 import os  
 import pymongo
 
-#try:
-#    import json
-#except ImportError:
-#    import simplejson as json
-
-
 def getServerStatus():
     host = "127.0.0.1"
     port = 27017
     c = pymongo.MongoClient(host, port)
-	if user and password:
-		c.admin.authenticate('user', 'password')
-	return c.['admin'].command('serverStatus', workingSet=True)
+    return c.admin.command('serverStatus', workingSet=True)
+
 def get():
-    return getServerStatus()["indexCounters"]["btree"]
+    return getServerStatus()["indexCounters"]
 
 def doData():
     for k,v in get().iteritems():
@@ -48,18 +41,17 @@ def doConfig():
 
 if __name__ == "__main__":          
 	
-	from os import environ
-	
-	if 'HOST' in environ:
-		host = environ['HOST']
-	if 'PORT' in environ:
-		port = environ['PORT']
-	if 'USER' in environ
-		user = environ['USER']
-	if 'PASSWORD' in environ
-		password = environ['PASSWORD']
+    from os import environ
+    if 'HOST' in environ:
+        host = environ['HOST']
+    if 'PORT' in environ:
+        port = environ['PORT']
+    if 'USER' in environ:
+        user = environ['USER']
+    if 'PASSWORD' in environ:
+        password = environ['PASSWORD']
     
-	if len(sys.argv) > 1 and sys.argv[1] == "config":
-        doConfig()
-    else:
-        doData()
+if len(sys.argv) > 1 and sys.argv[1] == "config":
+    doConfig()
+else:
+    doData()
