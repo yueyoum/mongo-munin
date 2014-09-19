@@ -12,7 +12,9 @@ Plugins
 
 Requirements
 -----------
-* MongoDB 1.4+ 
-* pymongo
+* MongoDB 2.4+ 
+* python/pymongo
 
-
+Notes
+-----------
+* Authentication needs to be re-added
