@@ -1,16 +1,3 @@
-#!/usr/bin/env python
-
-## GENERATED FILE - DO NOT EDIT
-
-import sys
-import os
-import pymongo
-
-def getServerStatus():
-    host = os.environ.get("MONGO_HOST", "127.0.0.1")
-    port = os.environ.get("MONGO_PORT", 27017)
-    c = pymongo.MongoClient(host, port)
-    return c.admin.command('serverStatus', workingSet=True)
 
 name = "documents"
 
@@ -34,9 +21,3 @@ def doConfig():
         print k + ".max 500000"
         print k + ".draw LINE1"
 
-
-
-if len(sys.argv) > 1 and sys.argv[1] == "config":
-    doConfig()
-else:
-    doData()
